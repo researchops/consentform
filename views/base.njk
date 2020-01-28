@@ -30,14 +30,16 @@
                 {% include "_includes/phaseBanner.njk" %}
                 {% include "_includes/fip.njk" %}
             </header>
-            <main id="content">
-                {% if errors %}
-                    {% include "_includes/errorList.njk" %}
-                {% endif %}
+            <div class="flex-contents">
+                <main id="content">
+                    {% if errors %}
+                        {% include "_includes/errorList.njk" %}
+                    {% endif %}
 
-                {% block content %}{% endblock %}
-            </main>
-            {% include "_includes/footer.njk" %}
+                    {% block content %}{% endblock %}
+                </main>
+                {% include "_includes/footer.njk" %}
+            </div>
         </div>
     </body>
     {% include "_includes/script.njk" %}

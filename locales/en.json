@@ -6,8 +6,8 @@
   "Skip to main content": "Skip to main content",
   "Language Selection": "Language Selection",
   "Language selection: French": "Language selection: French",
-  "footer.link1": "https://digital.canada.ca",
-  "footer.link1.desc": "Canadian Digital Service",
+  "footer.link1": "https://researchops.community",
+  "footer.link1.desc": "Re+ops Community",
   "wordmark.alt": "Symbol of the Government of Canada",
   "app.desc": "Node Starter App",
   "Continue": "Continue",
@@ -52,7 +52,7 @@
   "contactInfo.title": "Your contact information",
   "form.researcher_name": "Name",
   "form.researcher_phone": "Work phone number",
-  "form.researcher_email": "Work (TBS) email address",
+  "form.researcher_email": "Work email address",
   "testInfo.title": "Research information",
   "form.is_with_partner": "Will you be conducting research with another (partner) department?",
   "form.partner_department_name": "Which department will you be conducting the research with?",
@@ -144,5 +144,6 @@
   "form.upload": "upload file",
   "backgroundInfo.title": "Background information",
   "backgroundInfo.desc": "Will you be conducting research with another department?",
-  "feedback.not_setup": "Unfortunately feedback is not currently set up."
+  "feedback.not_setup": "Unfortunately feedback is not currently set up.",
+  "Please correct the errors on the page": "Please correct the errors on the page"
 }

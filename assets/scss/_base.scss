@@ -2,6 +2,16 @@
   box-sizing: border-box;
 }
 
+.flex-contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+
+  height: calc(#{100vh} - #{184px});
+  // align-items: ;
+}
+
 a[href],
 area[href],
 input,
@@ -52,7 +62,7 @@ ul {
 }
 
 a {
-  color: $color-blue-dark;
+  color: $color-reops-blue;
 
   &:visited {
     color: $color-purple;
@@ -83,10 +93,11 @@ h6 {
 main {
   @extend %page-container;
   padding: 0 $space-md;
-  padding-bottom: calc(#{$height-footer} + #{$space-xxl});
+  // padding-bottom: calc(#{$height-footer} + #{$space-xxl});
 
   h1 {
-    border-bottom: 1px solid $color-red;
+    border-bottom: 5px solid $color-reops-blue;
+    color: $color-grey-verydark;
   }
 
   > div {

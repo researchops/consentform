@@ -1,25 +1,37 @@
-$footerInnerHeight: 35px;
+$footerInnerHeight: 50px;
 
 footer {
   padding-top: $space-md;
   padding-bottom: $space-md;
-  border-top: 4px solid $color-blue-dark;
+  border-top: 4px solid $color-reops-blue;
   height: $height-footer;
-  position: absolute;
+  position: sticky;
+  background-color: $color-white;
   bottom: 0;
   width: 100%;
 
+  .page--container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  img {
+    height: 48px;
+  }
+
   .footer-links {
     font-size: 0.85em;
+    // width: 50%;
 
     ul {
       list-style: none;
       margin: 0;
       padding: 0;
-      margin-bottom: $space-xl;
+      // margin-bottom: $space-xl;
 
       @include sm {
-        margin-bottom: $space-md;
+        // margin-bottom: $space-md;
       }
     }
 
@@ -27,9 +39,9 @@ footer {
       margin-right: $space-sm;
 
       &::before {
-        content: '\2022';
+        // content: '\2022';
         color: $color-blue-light;
-        display: inline-block;
+        // display: inline-block;
         // bullets are about 5px, so add space to compensate
         width: calc(#{$space-sm} + 5px);
       }
@@ -39,25 +51,28 @@ footer {
           content: none;
           width: 0;
         }
-        display: inline-block;
+        display: flex;
       }
     }
 
     a {
       text-decoration: none;
+      font-weight: bold;
+      vertical-align: middle;
     }
   }
 
-  .canada-wordmark {
-    margin-bottom: $space-md;
-    width: 147.2px;
+  .researchOps-logo-wordmark {
+    // margin-bottom: $space-md;
+    // width: 147.2px;
+              height: 48px;
   }
 
   @include md {
     .page--container {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
 
       height: $footerInnerHeight;
 
@@ -66,17 +81,19 @@ footer {
 
         ul {
           // put the footer links on the same baseline as the Canada wordmark
-          margin-bottom: -$space-xxs;
+          // margin-bottom: -$space-xxs;
         }
       }
-      .canada-wordmark {
+      .researchOps-logo-wordmark {
         flex: 1;
         text-align: right;
-        margin-bottom: 0;
+        // margin-bottom: 0;
         max-height: 100%;
 
+
         img {
-          height: $footerInnerHeight;
+          // height: $footerInnerHeight;
+          height: 48px;
         }
       }
     }

@@ -9,10 +9,12 @@
     "node": ">=10"
   },
   "scripts": {
-    "dev": "NODE_ENV=development nodemon ./bin/www",
+    "dev": "nodemon ./bin/www",
     "lint": "node_modules/eslint/bin/eslint.js config routes bin/www app.js",
     "prettier": "prettier --write '**/*.{ts,js,css,html}'",
-    "start": "NODE_ENV=production node ./bin/www",
+    "prod_env": "set NODE_ENV=production",
+    "dev_env": "set NODE_ENV=development",
+    "start": "node ./bin/www",
     "test": "node node_modules/jest/bin/jest.js --coverage",
     "test:watch": "node node_modules/jest/bin/jest.js --watch",
     "postinstall": "patch-package",
