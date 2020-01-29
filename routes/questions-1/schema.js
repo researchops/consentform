@@ -57,9 +57,9 @@ const Schema = {
     custom: {
       options: (value, { req }) => {
         if (value && value.length > 0) {
-          if (!value.endsWith('.gc.ca')) {
-            return false
-          }
+          // if (!value.endsWith('.gc.ca')) {
+          //   return false
+          // }
         }
         return true
       },
