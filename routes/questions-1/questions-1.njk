@@ -12,30 +12,55 @@
             <h2>{{ __('contactInfo.title') }}</h2>
 
             {{ textInput('researcher_name', 'form.researcher_name') }}
+            {{ textInput('researcher_title', 'form.researcher_title') }}
             {{ textInput('researcher_phone', 'form.researcher_phone') }}
             {{ textInput('researcher_email', 'form.researcher_email') }}
             {{ textInput('researcher_org', 'form.researcher_org') }}
 
-
-            <h2>{{ __('testInfo.title') }}</h2>
+            <h2>{{ __('studyinfo.title') }}</h2>
 
             <div class="toggle-area">
-                {{ radioButtons('is_with_partner_dept', { 'on':'Yes','off':'No'}, data.is_with_partner, 'form.is_with_partner_dept', errors) }}
+                {{ radioButtons('is_with_partner_team', { 'on':'Yes','off':'No'}, data.is_with_partner, 'form.is_with_partner_team', errors) }}
             </div>
-            <div class="is_with_partner_dept-toggled" style="display:none" >
-                {{ textInput('partner_name_dept', 'form.partner_name_dept', { hint: 'form.partner_name_dept.desc' }) }}
-                {# {{ textInput('partner_department_acronym', 'form.partner_department_acronym') }} #}
+            <div class="is_with_partner_team-toggled" style="display:none" >
+                {{ textInput('partner_name_team', 'form.partner_name_team', { hint: 'form.partner_name_team.desc' }) }}
                 {{ textInput('partner_department_authority', 'form.partner_department_authority', { hint: 'form.partner_department_authority.desc' }) }}
             </div>
 
-            {{ radioButtons('research_method', { '1':'Interview','2':'Usability testing', '3':'Focus Group','4':'Diary Study'}, data.research_method, 'form.research_method', errors) }}
+            <div>
+                {{ checkBoxes('research_method', { 
+                'off-1':'form.interview', 'off-2':'form.usability_testing_moderated', 'off-3':'form.ethnography', 'off-4':'form.focus_groups', 'off-5':'form.card_sorting', 'off-6':'form.survey_moderated', 'off-7':'form.usability_testing_unmoderated', 'off-8':'form.survey_unmoderated', 'off-9':'form.diary_study'
+                }, data.research_method, 'form.research_method', errors) }}
+            </div>
+            <div>
+                {{ textInput('research_other', '', {hint: 'form.other_research_freetext.desc'}) }}
+            </div>
 
-            {{ textArea('research_goal', 'form.research_goal', {hint: 'form.research_goal.desc'}) }}
-            {{ textArea('session_activity', 'form.session_activity', {hint: 'form.session_activity.desc'}) }}
+            {{ textInput('research_goal', 'form.research_goal', {hint: 'form.research_goal.desc'}) }}
+            {{ textInput('session_activity', 'form.session_activity', {hint: 'form.session_activity.desc'}) }}
 
             {{ textInput('session_duration', 'form.session_duration', {hint: 'form.session_duration.desc'}) }}
 
-            {{ textArea('personal_information_collected', 'form.personal_information_collected', {hint: 'form.personal_information_collected.desc'}) }}
+            {{ checkBoxes('personal_information_collected', { 
+            '1':'form.personal_collected_full_name',
+            '2':'form.personal_collected_phone',
+            '3':'form.personal_collected_email',
+            '4':'form.personal_collected_age',
+            '5':'form.personal_collected_gender',
+            '6':'form.personal_collected_nationality',
+            '7':'form.personal_collected_address',
+            '8':'form.personal_collected_employment_status',
+            '9':'form.personal_collected_title',
+            '10':'form.personal_collected_company',
+            '11':'form.personal_collected_income',
+            '12':'form.personal_collected_maritus_status',
+            '13':'form.personal_collected_dependants',
+            '14':'form.personal_collected_device',
+            '15':'form.personal_collected_account_details',
+            '16':'form.personal_collected_identification_number'
+            }, data.personal_information_collected, 'form.personal_information_collected', errors) }}
+
+            {{ textInput('personal_collected_other', '', {hint: 'form.personal_collected_other.desc'}) }}
             
             <h2>{{ __('compensation.title') }}</h2>
             
@@ -43,42 +68,101 @@
                 {{ radioButtons('compensation', { 'on':'Yes','off':'No'}, data.compensation, 'form.compensation', errors) }}
             </div>
             <div class="compensation-toggled" style="display:none" >
-                {{ radioButtons('compensation_method', { '1':'Gift card','2':'Cash', '3':'Merchandise','4':'Combination','5':'Other'}, data.compensation_method, 'form.compensation_method', errors) }}
-                {{ textInput('compensation_name', 'form.compensation_name', { hint: 'form.compensation_name.desc' }) }}
+                {{ radioButtons('compensation_method', { 
+                    '1':'form.compensation_cash_physical',
+                    '2':'form.compensation_cash_transfer',
+                    '3':'form.compensation_gift_card'
+                    }, data.compensation_method, 'form.compensation_method', errors) }}
+                {{ textInput('compensation_value', 'form.compensation_value', { hint: 'form.compensation_value.desc' }) }}
             </div>
         
-
             <h2>{{ __('privacy.title') }}</h2>
             
+            
             <div class="toggle-area">
-            {{ radioButtons('confidentiality', { 'off-1':'form.anonymized','off-2':'form.anonymous','off-3':'form.confidential','on-1':'form.not_confidential','on-2':'form.public'}, data.confidentiality, 'form.confidentiality', errors) }}
+            {{ radioButtons('confidentiality', { 'off-1':'form.confidentiality_full','on-1':'form.confidentiality_partial','on-2':'form.confidentiality_none'}, data.confidentiality, 'form.confidentiality', errors) }}
+            
+            <div class="toggle-area">
+            {{ checkBoxes('confidentiality_info', {'on-1':'form.confidentiality_info'}, data.confidentiality-info, '', errors) }}
+                <div class="confidentiality_info-toggled" style="display:none" >
+                    <ul class="confidentiality_list">
+                        <li class=>{{ __('form.confidentiality_full') }}
+                            <ul>
+                                <li>{{ __('form.confidentiality_full.desc1') }}</li>
+                                <li>{{ __('form.confidentiality_full.desc2') }} </li>
+                            </ul>  
+                        </li>
+                        <li>{{ __('form.confidentiality_partial') }}
+                            <ul>
+                                <li>{{ __('form.confidentiality_partial.desc1') }}</li>
+                                <li>{{ __('form.confidentiality_partial.desc2') }} </li>
+                            </ul>  
+                        </li> 
+                        <li>{{ __('form.confidentiality_none') }}
+                            <ul>
+                                <li>{{ __('form.confidentiality_none.desc1') }}</li>
+                            </ul>  
+                        </li>    
+                    </ul>     
+                </div> 
             </div>
+
             <div class="confidentiality-toggled" style="display:none" >
-                {{ textArea('personal_information_disclosed_to_public', 'form.personal_information_disclosed_to_public', {hint: 'form.personal_information_disclosed_to_public.desc'}) }}
-            </div>
+                {{ checkBoxes('personal_information_shared', { 
+                '1':'form.personal_shared_full_name',
+                '2':'form.personal_shared_phone',
+                '3':'form.personal_shared_email',
+                '4':'form.personal_shared_age',
+                '5':'form.personal_shared_gender',
+                '6':'form.personal_shared_nationality',
+                '7':'form.personal_shared_address',
+                '8':'form.personal_shared_employment_status',
+                '9':'form.personal_shared_title',
+                '10':'form.personal_shared_company',
+                '11':'form.personal_shared_income',
+                '12':'form.personal_shared_maritus_status',
+                '13':'form.personal_shared_dependants',
+                '14':'form.personal_shared_device',
+                '15':'form.personal_shared_account_details',
+                '16':'form.personal_shared_identification_number'
+                }, data.personal_information_shared, 'form.personal_information_shared', errors) }}
 
-            {# <div class="toggle-area">
-                {{ radioButtons('administrative_decision', { 'on':'Yes','off':'No'}, data.administrative_decision, 'form.administrative_decision', errors) }}
-            </div>
-            <div class="administrative_decision-toggled" style="display:none" >
-                {{ textArea('administrative_purpose', 'form.administrative_purpose', {hint: 'form.administrative_purpose.desc'}) }}
-            </div> #}
+                <div class="other_text_box"> {{ textInput('personal_shared_other', '', {hint: 'form.personal_shared_other.desc'}) }}
+                </div>
 
-            {{ radioButtons('consent', { '1':'Verbally','2':'On paper'}, data.consent, 'form.consent', errors) }}
-
-            {# {{ radioButtons('is_business', { '1':'Yes','2':'No'}, data.is_business, 'form.is_business', errors, {hint: 'form.is_business.desc'}) }} #}
-
-            <div class="toggle-area">
-                {{ radioButtons('recording_type', { 'on-1':'Video and audio','on-2':'Audio only','on-3':'Screen recording with audio','off-1':'Screen recording only','off-2':'No recording'}, data.recording_type, 'form.recording_type', errors) }}
-            </div>
-            <div class="recording_type-toggled" style="display:none" >
                 <div class="toggle-area">
-                    {{ radioButtons('will_the_recording_be_disclosed_dept', { 'on':'Yes','off':'No'}, data.consent, 'form.will_the_recording_be_disclosed_dept', errors) }}
+                {{ radioButtons('administrative_decision', { 'on-1':'Yes','off-1':'No'}, data.administrative_decision, 'form.administrative_decision', errors) }}
                 </div>
-                <div class="will_the_recording_be_disclosed-toggled" style="display:none" >
-                    {{ textArea('purposes_for_which_the_recording_may_be_disclosed_dept', 'form.purposes_for_which_the_recording_may_be_disclosed_dept', {hint: 'form.purposes_for_which_the_recording_may_be_disclosed_dept.desc'}) }}
+                <div class="administrative_decision-toggled" style="display:none">
+                {{ textInput('administrative_purpose', 'form.administrative_purpose', {hint: 'form.administrative_purpose.desc'}) }}
                 </div>
+
+
             </div>
+            {{ radioButtons('consent', { 
+                '1':'form.consent_verbal',
+                '2':'form.consent_written',
+                '3':'form.consent_digital',
+                '4':'form.consent_agency'
+                }, data.consent, 'form.consent', errors) }}
+            <div class="other_text_box">{{ textInput('consent_other', '', {hint: 'form.consent_other.desc'}) }}</div>
+
+            <div>
+                {{ radioButtons('company_representation', { 'on-1':'Yes','off-1':'No'}, data.company_representation, 'form.company_representation', errors) }}
+            </div>
+
+            <div>
+                {{ radioButtons('recording_type', { 
+                'on-1':'form.recording_video',
+                'on-2':'form.recording_audio',
+                'on-3':'form.recording_image',
+                'off-1':'form.recording_device',
+                'off-2':'form.recording_written',
+                'off-3':'form.recording_none'
+                }, data.recording_type, 'form.recording_type', errors) }}
+            </div>
+
+
             {{ formButtons() }}
         </form>
     </div>

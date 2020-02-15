@@ -17,7 +17,7 @@
     
 
     .w-3-4 {
-      width: 75%;
+      width: 90%;
     }
     .w-1-2 {
       width: 50%;
@@ -51,11 +51,17 @@
 
 .form {
   > div:not(:last-of-type) {
-    margin-bottom: $space-xl;
+    margin-bottom: $space-md;
   }
 
   div *:last-child {
-    margin-bottom: 0;
+    // margin-bottom: 0;
+    margin-bottom: $space-sm;
+  }
+
+  div *:first-child {
+    margin-top: 0;
+    // margin-bottom: $space-sm;
   }
 
   %form-element {
@@ -92,6 +98,7 @@
 
   .form-message {
     color: $color-grey-dark;
+    font-size: medium;
   }
 
   .validation-message {
@@ -198,3 +205,38 @@
     margin-bottom: $space-xxs;
   }
 }
+
+#confidentiality_info {
+  margin-top: -$space-md;
+  // position: relative;
+  // top: -$space-sm;
+  margin-bottom: -$space-sm;
+}
+
+.confidentiality-toggled {
+  margin-top: 0;
+  // margin-bottom: $space-sm;
+}
+
+.toggle-area .confidentiality_info-toggled.form {
+  margin-top: 0;
+  margin-bottom: $space-md;
+}
+
+.other_text_box {
+  margin-bottom: $space-md;
+}
+
+.confidentiality_list {
+    font-size: small;
+    font-style: italic;
+    list-style: none;
+    padding-left: 0;
+   li {
+      font-weight: bold;
+      li { 
+        font-weight: normal;
+        margin-bottom:0;
+      }
+    }
+  }
