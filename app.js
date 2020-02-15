@@ -63,6 +63,7 @@ app.use(
 
 // public assets go here (css, js, etc)
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'www')))
 
 // dnsPrefetchControl controls browser DNS prefetching
 // frameguard to prevent clickjacking

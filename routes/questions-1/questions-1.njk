@@ -14,20 +14,21 @@
             {{ textInput('researcher_name', 'form.researcher_name') }}
             {{ textInput('researcher_phone', 'form.researcher_phone') }}
             {{ textInput('researcher_email', 'form.researcher_email') }}
+            {{ textInput('researcher_org', 'form.researcher_org') }}
 
 
             <h2>{{ __('testInfo.title') }}</h2>
 
             <div class="toggle-area">
-                {{ radioButtons('is_with_partner', { 'on':'Yes','off':'No'}, data.is_with_partner, 'form.is_with_partner', errors) }}
+                {{ radioButtons('is_with_partner_dept', { 'on':'Yes','off':'No'}, data.is_with_partner, 'form.is_with_partner_dept', errors) }}
             </div>
-            <div class="is_with_partner-toggled" style="display:none" >
-                {{ textInput('partner_department_name', 'form.partner_department_name', { hint: 'form.partner_department_name.desc' }) }}
-                {{ textInput('partner_department_acronym', 'form.partner_department_acronym') }}
+            <div class="is_with_partner_dept-toggled" style="display:none" >
+                {{ textInput('partner_name_dept', 'form.partner_name_dept', { hint: 'form.partner_name_dept.desc' }) }}
+                {# {{ textInput('partner_department_acronym', 'form.partner_department_acronym') }} #}
                 {{ textInput('partner_department_authority', 'form.partner_department_authority', { hint: 'form.partner_department_authority.desc' }) }}
             </div>
 
-            {{ radioButtons('research_method', { '1':'Interview','2':'Usability testing'}, data.research_method, 'form.research_method', errors) }}
+            {{ radioButtons('research_method', { '1':'Interview','2':'Usability testing', '3':'Focus Group','4':'Diary Study'}, data.research_method, 'form.research_method', errors) }}
 
             {{ textArea('research_goal', 'form.research_goal', {hint: 'form.research_goal.desc'}) }}
             {{ textArea('session_activity', 'form.session_activity', {hint: 'form.session_activity.desc'}) }}
@@ -42,10 +43,11 @@
                 {{ radioButtons('compensation', { 'on':'Yes','off':'No'}, data.compensation, 'form.compensation', errors) }}
             </div>
             <div class="compensation-toggled" style="display:none" >
-                {{ radioButtons('compensation_method', { '1':'Mastercard gift card','2':'VISA gift card'}, data.compensation_method, 'form.compensation_method', errors) }}
-                {{ radioButtons('compensation_value', { '1':'$50 (For 1 hour of their time)','2':'$25 (For 1/2 hour of their time)','3':'$10 (For 8.5 min of their time (minimum))'}, data.compensation_value, 'form.compensation_value', errors) }}
+                {{ radioButtons('compensation_method', { '1':'Gift card','2':'Cash', '3':'Merchandise','4':'Combination','5':'Other'}, data.compensation_method, 'form.compensation_method', errors) }}
+                {{ textInput('compensation_name', 'form.compensation_name', { hint: 'form.compensation_name.desc' }) }}
             </div>
-            
+        
+
             <h2>{{ __('privacy.title') }}</h2>
             
             <div class="toggle-area">
@@ -55,26 +57,26 @@
                 {{ textArea('personal_information_disclosed_to_public', 'form.personal_information_disclosed_to_public', {hint: 'form.personal_information_disclosed_to_public.desc'}) }}
             </div>
 
-            <div class="toggle-area">
+            {# <div class="toggle-area">
                 {{ radioButtons('administrative_decision', { 'on':'Yes','off':'No'}, data.administrative_decision, 'form.administrative_decision', errors) }}
             </div>
             <div class="administrative_decision-toggled" style="display:none" >
                 {{ textArea('administrative_purpose', 'form.administrative_purpose', {hint: 'form.administrative_purpose.desc'}) }}
-            </div>
+            </div> #}
 
             {{ radioButtons('consent', { '1':'Verbally','2':'On paper'}, data.consent, 'form.consent', errors) }}
 
-            {{ radioButtons('is_business', { '1':'Yes','2':'No'}, data.is_business, 'form.is_business', errors, {hint: 'form.is_business.desc'}) }}
+            {# {{ radioButtons('is_business', { '1':'Yes','2':'No'}, data.is_business, 'form.is_business', errors, {hint: 'form.is_business.desc'}) }} #}
 
             <div class="toggle-area">
                 {{ radioButtons('recording_type', { 'on-1':'Video and audio','on-2':'Audio only','on-3':'Screen recording with audio','off-1':'Screen recording only','off-2':'No recording'}, data.recording_type, 'form.recording_type', errors) }}
             </div>
             <div class="recording_type-toggled" style="display:none" >
                 <div class="toggle-area">
-                    {{ radioButtons('will_the_recording_be_disclosed', { 'on':'Yes','off':'No'}, data.consent, 'form.will_the_recording_be_disclosed', errors) }}
+                    {{ radioButtons('will_the_recording_be_disclosed_dept', { 'on':'Yes','off':'No'}, data.consent, 'form.will_the_recording_be_disclosed_dept', errors) }}
                 </div>
                 <div class="will_the_recording_be_disclosed-toggled" style="display:none" >
-                    {{ textArea('purposes_for_which_the_recording_may_be_disclosed', 'form.purposes_for_which_the_recording_may_be_disclosed', {hint: 'form.purposes_for_which_the_recording_may_be_disclosed.desc'}) }}
+                    {{ textArea('purposes_for_which_the_recording_may_be_disclosed_dept', 'form.purposes_for_which_the_recording_may_be_disclosed_dept', {hint: 'form.purposes_for_which_the_recording_may_be_disclosed_dept.desc'}) }}
                 </div>
             </div>
             {{ formButtons() }}

@@ -4,26 +4,26 @@
 
 <h1>Here's your generated privacy form</h1>
 
-<a target="_blank" href="email-link">Email yourself a link to your answers</a>
-&nbsp; &nbsp;
+{# <a target="_blank" href="email-link">Email yourself a link to your answers</a>
+&nbsp; &nbsp; #}
 {# <a href={{ "documents/" + docxFilename }}>Download as a Word doc</a>
-&nbsp; &nbsp;
-<a href="agreement-1?lang=fr">Get the French version</a> #}
+&nbsp; &nbsp; #}
+{# <a href="agreement-1?lang=fr">Get the French version</a> #}
 
-<p style="margin-top: 30px">
+{# <p style="margin-top: 30px">
     Make sure you check the draft form for errors before you
     <a target="_blank" href="https://atip-aiprp.apps.gc.ca/atip/welcome.do">send it to your ATIP office (opens in new tab)</a>.
-</p>
+</p> #}
 
 <div style="display: none">start of agreement</div>
 
 <hr style="margin-top: 40px"/>
 
-<p style="margin-top: 40px">
+{# <p style="margin-top: 40px">
     [Put your consent form and privacy statement in an existing privacy form template to add the <a target="_blank" href="https://www.canada.ca/en/treasury-board-secretariat/services/government-communications/federal-identity-program/technical-specifications/stationery/letterhead-flag-symbol.html">Canadian flag symbol signature (opens in new tab)</a>.]
-</p>
+</p> #}
 
-<h2>DRAFT 'Consent to participate in research form' to send to your ATIP office</h2>
+<h2>'Consent to participate in research form'</h2>
 
 <div>
     <p>
@@ -34,11 +34,12 @@
         <strong>{{ defaultValue("researcher_phone") }}</strong>
         <br>
         <strong>{{ defaultValue("researcher_email") }}</strong>
+        <br>
+        <strong>{{ defaultValue("researcher_org") }}</strong>
     </p>
 
     <p>
     Thank you for volunteering to talk to us.
-    We work with the Canadian Digital Service (CDS).
     {% if data.is_with_partner == "yes" %}
       We are working with {{ defaultValue("partner_department_name") }} ({{ defaultValue("partner_department_acronym") }}) to {{ defaultValue("research_goal") }}.
     {% else %}
