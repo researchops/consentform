@@ -2,5 +2,7 @@
   "semi": false,
   "parser": "babel",
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "tabWidth": 1,
+	"useTabs": true
 }

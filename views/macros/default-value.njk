@@ -2,4 +2,13 @@
   - `property`: form value to look up
 #}
 
-{% macro defaultValue(property) %}{% if (property in data) and (data[property] !== "")  %}<b>{{ data[property] }}</b>{% else %}<span style="color:red; font-weight:bold">**{{ property }}**</span>{% endif %}{% endmacro %}
+{% macro defaultValue(property, bold = true) %}
+{% if (property in data) and (data[property] !== "") %}
+  {% if (bold) %}
+    <b>{{data[property] | trim | lower }}</b>
+  {% else %}
+    {{data[property] | trim | lower}}
+  {% endif %}
+{% else %}
+  <span style="color:red; font-weight:bold">**{{ property }}**</span>
+{% endif %}{% endmacro %}

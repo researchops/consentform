@@ -1,13 +1,17 @@
 header {
   padding: 0 0 0 0;
 
+  img {
+    height: 48*2px;
+  }
+
   button {
     padding: 0;
   }
 
   @include sm {
-    padding-bottom: $space-lg;
-    text-align: right;
+    padding-bottom: 0;
+    text-align: left;
   }
 
   .fip-container {
@@ -53,12 +57,12 @@ header {
     }
   }
 
-  .canada-flag {
-    width: 272px;
+  .researchOps-logo {
+    width: 100px;
     margin-bottom: $space-sm;
 
     @include sm {
-      width: 360px;
+      width: 200px;
       margin-bottom: 0;
     }
   }

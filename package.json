@@ -9,10 +9,12 @@
     "node": ">=10"
   },
   "scripts": {
-    "dev": "NODE_ENV=development nodemon ./bin/www",
+    "dev": "nodemon ./bin/www",
     "lint": "node_modules/eslint/bin/eslint.js config routes bin/www app.js",
     "prettier": "prettier --write '**/*.{ts,js,css,html}'",
-    "start": "NODE_ENV=production node ./bin/www",
+    "prod_env": "set NODE_ENV=production",
+    "dev_env": "set NODE_ENV=development",
+    "start": "node ./bin/www",
     "test": "node node_modules/jest/bin/jest.js --coverage",
     "test:watch": "node node_modules/jest/bin/jest.js --watch",
     "postinstall": "patch-package",
@@ -30,6 +32,7 @@
     "express-validator": "^6.2.0",
     "helmet": "^3.21.1",
     "i18n": "^0.8.3",
+    "mailgun-js": "^0.22.0",
     "memorystore": "^1.6.1",
     "node-pandoc": "^0.3.0",
     "node-sass": "^4.12.0",

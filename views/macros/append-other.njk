@@ -1,0 +1,7 @@
+{% macro appendOther(list1, list2) %}
+{% if (list2 != "") %}
+    {# {% set currentList = [] %} #}
+    {# {% set currentList = (currentList.push({list2}), list1) %} #}
+    {% set list1 = (list1.push(list2), list1) %}
+{% endif %}
+{% endmacro %}

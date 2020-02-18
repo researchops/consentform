@@ -86,13 +86,17 @@
   }
 }
 
-.multiple-choice--checkboxes .multiple-choice__item {
-  > input[type='checkbox'] {
-    top: calc(50% - 20px);
-    left: 0;
-    width: 40px;
-    height: 40px;
+  .multiple-choice--checkboxes:first-of-type{
+    margin-top: $space-md;
   }
+
+  .multiple-choice--checkboxes .multiple-choice__item {
+    > input[type='checkbox'] {
+      top: calc(50% - 20px);
+      left: 0;
+      width: 40px;
+      height: 40px;
+    }
 
   > input[type='checkbox'] + label {
     &::before {
