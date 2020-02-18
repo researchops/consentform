@@ -17,10 +17,10 @@
             {{ textInput('researcher_email', 'form.researcher_email') }}
             {{ textInput('researcher_org', 'form.researcher_org') }}
 
-            <h2>{{ __('studyinfo.title') }}</h2>
+            <h2>{{ __('study_info.title') }}</h2>
 
             <div class="toggle-area">
-                {{ radioButtons('is_with_partner_team', { 'on':'Yes','off':'No'}, data.is_with_partner, 'form.is_with_partner_team', errors) }}
+                {{ radioButtons('is_with_partner_team', { 'on':'yes','off':'no'}, data.is_with_partner_team, 'form.is_with_partner_team', errors) }}
             </div>
             <div class="is_with_partner_team-toggled" style="display:none" >
                 {{ textInput('partner_name_team', 'form.partner_name_team', { hint: 'form.partner_name_team.desc' }) }}
@@ -53,8 +53,8 @@
             '9':'form.personal_collected_title',
             '10':'form.personal_collected_company',
             '11':'form.personal_collected_income',
-            '12':'form.personal_collected_maritus_status',
-            '13':'form.personal_collected_dependants',
+            '12':'form.personal_collected_marital_status',
+            '13':'form.personal_collected_dependents',
             '14':'form.personal_collected_device',
             '15':'form.personal_collected_account_details',
             '16':'form.personal_collected_identification_number'
@@ -65,7 +65,7 @@
             <h2>{{ __('compensation.title') }}</h2>
             
             <div class="toggle-area">
-                {{ radioButtons('compensation', { 'on':'Yes','off':'No'}, data.compensation, 'form.compensation', errors) }}
+                {{ radioButtons('compensation', { 'on':'yes','off':'no'}, data.compensation, 'form.compensation', errors) }}
             </div>
             <div class="compensation-toggled" style="display:none" >
                 {{ radioButtons('compensation_method', { 
@@ -120,8 +120,8 @@
                 '9':'form.personal_shared_title',
                 '10':'form.personal_shared_company',
                 '11':'form.personal_shared_income',
-                '12':'form.personal_shared_maritus_status',
-                '13':'form.personal_shared_dependants',
+                '12':'form.personal_shared_marital_status',
+                '13':'form.personal_shared_dependents',
                 '14':'form.personal_shared_device',
                 '15':'form.personal_shared_account_details',
                 '16':'form.personal_shared_identification_number'
@@ -131,7 +131,7 @@
                 </div>
 
                 <div class="toggle-area">
-                {{ radioButtons('administrative_decision', { 'on-1':'Yes','off-1':'No'}, data.administrative_decision, 'form.administrative_decision', errors) }}
+                {{ radioButtons('administrative_decision', { 'on-1':'yes','off-1':'no'}, data.administrative_decision, 'form.administrative_decision', errors) }}
                 </div>
                 <div class="administrative_decision-toggled" style="display:none">
                 {{ textInput('administrative_purpose', 'form.administrative_purpose', {hint: 'form.administrative_purpose.desc'}) }}
@@ -143,12 +143,13 @@
                 '1':'form.consent_verbal',
                 '2':'form.consent_written',
                 '3':'form.consent_digital',
-                '4':'form.consent_agency'
+                '4':'form.consent_agency',
+                '5':'other'
                 }, data.consent, 'form.consent', errors) }}
             <div class="other_text_box">{{ textInput('consent_other', '', {hint: 'form.consent_other.desc'}) }}</div>
 
             <div>
-                {{ radioButtons('company_representation', { 'on-1':'Yes','off-1':'No'}, data.company_representation, 'form.company_representation', errors) }}
+                {{ radioButtons('organisation_representation', { 'on-1':'yes','off-1':'no'}, data.company_representation, 'form.organisation_representation', errors) }}
             </div>
 
             <div>

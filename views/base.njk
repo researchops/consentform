@@ -8,6 +8,7 @@
 {% from 'input-file.njk' import fileInput as fileInput with context %}
 {% from 'default-value.njk' import defaultValue as defaultValue with context %}
 {% from 'translation.njk' import translation as translation with context %}
+{% from 'append-other.njk' import appendOther as appendOther with context %}
 
 <!DOCTYPE html>
 <html lang="{{ 'en' if getLocale() === 'fr' else 'en' }}">
@@ -24,7 +25,7 @@
         <title>{{ __('app.title') }}</title>
     </head>
     <body>
-        <a class="skip-link" href="#content">{{ __('Skip to main content') }}</a>
+        <a class="skip-link" href="#content">{{ __('skip_to_main_content') }}</a>
         <div class="container">
             <header>
                 {% include "_includes/phaseBanner.njk" %}

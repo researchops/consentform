@@ -22,13 +22,19 @@ const startHtml = `<div style="display: none">start of agreement</div>`
 
 // make first letter lowercase and delete trailing periods
 const lowerCaseFirstLetter = s =>
-	s && s.length > 0 ? s[0].toLowerCase() + s.slice(1) : s
+	s
+	// s && s.length > 0 ? s[0].toLowerCase() + s.slice(1) : s
+
+// const removePrefix = s => {
+// 	s && s.length > 0 && typeof s == 'string' ? s.
+// 	}
 
 const stripTrailingPeriods = s =>
 	s && s.length > 0 && typeof s == 'string' ? s.replace(/\.*\s*$/, '') : s
 
 const changeToPhrase = key =>
 	!key.includes('partner_department') && !key.includes('researcher')
+	
 
 module.exports = app => {
 	const name = 'agreement-1'
@@ -42,6 +48,21 @@ module.exports = app => {
 		var docxFilename = 'agreement-' + randomString + '.docx'
 
 		const data = routeUtils.getViewData(req, {}).data
+		console.log(data)
+
+		if (data.administrative_decision == undefined) {data.administrative_decision = ""} 
+		if (data.is_with_partner_team == undefined) {data.is_with_partner_team = ""} 
+		if (data.compensation == undefined) {data.compensation = ""} 
+		if (data.confidentiality == undefined) {data.confidentiality = ""} 
+		if (data.recording_type == undefined) {data.recording_type = ""} 
+		if (data.company_representation == undefined) {data.company_representation = ""} 
+		if (data.consent == undefined) {data.consent = ""} 
+		if (data.research_method == undefined) {data.research_method = ""} 
+		if (data.personal_information_shared == undefined) {data.personal_information_shared = ""} 
+		if (data.personal_information_collected == undefined) {data.personal_information_collected = ""}
+		console.log(data.research_method)
+		console.log(data.personal_information_shared)
+		console.log(data.personal_information_collected)
 		var queryParams = {}
 		Object.keys(data)
 			.filter(key => key !== '_csrf' && data[`${key}`] !== '')
