@@ -27,9 +27,9 @@
 
     {% if data.is_with_partner_team == "" %}{{defaultValue("is_with_partner_team")}}{% endif %}
     {% if data.is_with_partner_team == "yes" %}
-      {{ __('agreement.working_with') }} {{defaultValue("partner_name_team")}} {{__('to') }} {{ defaultValue("research_goal") }}.
+      {{ __('agreement.working_with') }} {{defaultValue("partner_name_team")}} {{__('to') }} {{ defaultValue("research_goal")}}.
     {% else %}
-      {{ __('agreement.research_reason') }} {{ defaultValue("research_goal") }}.
+      {{ __('agreement.research_reason') }} {{ defaultValue("research_goal")}}.
     {% endif %}
     </p>
 
@@ -45,7 +45,10 @@
 
         {% if data.compensation == "" %}{{defaultValue("compensation")}}{% endif %}
       {% if data.compensation == "yes" %}
-        <li>For your {{ defaultValue("session_duration") }} of input, you will receive a one-time payment via <strong>{{ (__(data.compensation_method)) }}</strong> of up to {{ defaultValue("compensation_value") }}. This may be taxable income.</li>
+        <li>For your {{ defaultValue("session_duration") }} of input, you will receive a one-time payment via 
+        <strong>
+        {%- if (data.compensation_method == "") and (data.compensation_other != "") %}{{data.compensation_other | trim}}{%- elif (data.compensation_method != "") and (data.compensation_other != "") %}{%- if data.compensation_method|is_not_string %}{{data.compensation_other | trim}}, {%- else %}{{data.compensation_other | trim}} and {% endif %}{%- elif (data.compensation_method == "") and (data.compensation_other == "") %}{{defaultValue("compensation_method")}}{% endif %}{% if data.compensation_method|is_not_string %}{%- for item in data.compensation_method %}{{(__(data.compensation_method[loop.index0]))}}{%- if loop.index0 === loop.length-2 %}</strong> and <strong>{%- elif loop.index0 < loop.length-2 %}, {% endif %}{% endfor %}{% else %}{{ (__(data.compensation_method)) }}{% endif %}
+        </strong> of up to {{ defaultValue("compensation_value") }}. This may be taxable income.</li>
       {% endif %}
 
       {% if data.confidentiality == "form.confidentiality_full" %}
@@ -61,24 +64,20 @@
 
         {% if data.confidentiality == "" %}{{defaultValue("confidentiality")}}{% endif %}
       {% if data.confidentiality != "form.confidentiality_full" %}
-      <li>Your 
-            <strong>
-            {%- if (data.personal_information_shared == "") and (data.personal_shared_other != "") %}{{data.personal_shared_other | trim | lower }}{%- elif (data.personal_information_shared != "") and (data.personal_shared_other != "") %}{{data.personal_shared_other | trim | lower }}, {%- elif (data.personal_information_shared == "") and (data.personal_shared_other == "") %}
-            {{defaultValue("personal_information_shared")}}
-            {% endif %}
-            {%- for item in data.personal_information_shared %}
-            {{(__(data.personal_information_shared[loop.index0]))}}{%- if loop.index0 === loop.length-2 %} </strong>and<strong>{%- elif loop.index0 < loop.length-2 %},{% endif %}{% endfor %}
-            </strong>
+        <li>Your 
+        <strong>
+        {%- if (data.personal_information_shared == "") and (data.personal_shared_other != "") %}{{data.personal_shared_other | trim}}{%- elif (data.personal_information_shared != "") and (data.personal_shared_other != "") %}{%- if data.personal_information_shared|is_not_string %}{{data.personal_shared_other | trim}}, {%- else %}{{data.personal_shared_other | trim}} and {% endif %}{%- elif (data.personal_information_shared == "") and (data.personal_shared_other == "") %}{{defaultValue("personal_information_shared")}}{% endif %}{% if data.personal_information_shared|is_not_string %}{%- for item in data.personal_information_shared %}{{(__(data.personal_information_shared[loop.index0]))}}{%- if loop.index0 === loop.length-2 %} </strong>and<strong>{%- elif loop.index0 < loop.length-2 %},{% endif %}{% endfor %}{% else %}{{ (__(data.personal_information_shared)) }}{% endif %}
+        </strong>
         {% if data.confidentiality == "form.confidentiality_partial" %}
           may be shared internally.
         {% elif data.confidentiality == "form.confidentiality_none" %}
           may be shared publicly.
         {% endif %}
-        {% endif %}
-        </li>
+      {% endif %}
+      </li>
     </ul>
-        {% if data.recording_type == "" %}{{defaultValue("recording_type")}}{% endif %}
-        {% if (data.recording_type == "form.recording_video") or (data.recording_type == "form.recording_audio") or (data.recording_type == "form.recording_image") %}
+      {% if data.recording_type == "" %}{{defaultValue("recording_type")}}{% endif %}
+      {% if ("form.recording_video" in data.recording_type) or ("form.recording_audio" in data.recording_type) or ("form.recording_image" in data.recording_type) %}
 
     <h3>Recording</h3>
 
@@ -100,32 +99,33 @@
     <p>
       {% if data.consent == "form.consent_verbal" %}
         <br>
-        Name: _________________________
+        Name: ______________________________________________________
         <br>
-        Date: _________________________ 
+        Date: ______________________________________________________ 
         <br>
-        Time: _________________________
+        Time: ______________________________________________________
       {% elif data.consent == "form.consent_written"%}
         <b>I understand the points above and consent to participate in the research.</b>
         <br>
         <br>
-        Name: _________________________
+        Name: ______________________________________________________
         <br>
-        Date: _________________________
+        Date: ______________________________________________________
         <br>
-        Signature: _________________________
+        Signature: ______________________________________________________
       {% elif data.consent == "form.consent_digital" or data.consent == "form.consent_agency" %}
-        You will be asked to or already have provided your consent via <strong>{{ __('form.consent_other') | lower}}</strong>.
+        You will be asked to or already have provided your consent via <strong>{{ __('form.consent_other')}}</strong>.
       {% elif data.consent == "other" %}
-        You will be asked to or already have provided your consent via <strong>{{ __('form.consent_other') | lower}}</strong>.
+        You will be asked to or already have provided your consent via <strong>{{ __('form.consent_other')}}</strong>.
       {% elif data.consent == "" %}
         {{defaultValue("consent")}}
       {% endif %}
     </p>
 
     {% if data.organisation_representation == "yes" %}
-      <b>As you are representing an organisation, please indicate their name below.</b>
-      <p>Legal business name: ____________________________</p>
+      <strong>As you are representing an organisation, please indicate their name below.</strong>
+      <br><br>
+      <p>Legal business name: ______________________________________________________</p>
     {% elif data.organisation_representation == "" %}
       {{defaultValue("organisation_representation")}}
     {% endif %}
@@ -135,9 +135,7 @@
     <h3>Research Methods</h3>
     <p>The research will involve the following methods: 
     <strong>
-      {%- if (data.research_method == "") and (data.research_other != "") %}{{data.research_other | trim | title }}{%- elif (data.research_method != "") and (data.research_other != "") %}{{data.research_other | trim | title }}, {%- elif (data.research_method == "") and (data.research_other == "") %}
-            {{defaultValue("research_method")}}{% endif %}
-    {%- for item in data.research_method %}{{(__(data.research_method[loop.index0])) | trim}}{%- if loop.index0 === loop.length-2 %}</strong> and <strong>{%- elif loop.index0 < loop.length-2 %}, {% endif %}{% endfor %}.
+      {%- if (data.research_method == "") and (data.research_other != "") %}{{data.research_other | trim | title }}{%- elif (data.research_method != "") and (data.research_other != "") %}{%- if data.research_method|is_not_string %}{{data.research_other | trim}}, {%- else %}{{data.research_other | trim }} and {% endif %}{%- elif (data.research_method == "") and (data.research_other == "") %}{{defaultValue("research_method")}}{% endif %}{% if data.research_method|is_not_string %}{%- for item in data.research_method %}{{(__(data.research_method[loop.index0]))}}{%- if loop.index0 === loop.length-2 %}</strong> and <strong>{%- elif loop.index0 < loop.length-2 %}, {% endif %}{% endfor %}{% else %}{{ (__(data.research_method)) }}{% endif %}.
     </strong>
     </p>
 
@@ -147,11 +145,7 @@
     <h3>What we will collect</h3>
     <p>By participating in this research you consent that your 
     <strong>
-    {%- if (data.personal_information_collected == "") and (data.personal_collected_other != "") %}{{data.personal_collected_other | trim | lower }}{%- elif (data.personal_information_collected != "") and (data.personal_collected_other != "") %}{{data.personal_collected_other | trim | lower }}, {%- elif (data.personal_information_collected == "") and (data.personal_collected_other == "") %}
-            {{defaultValue("personal_information_collected")}}{% endif %}
-    {%- for item in data.personal_information_collected %}
-      {{(__(data.personal_information_collected[loop.index0]))}}{%- if loop.index0 === loop.length-2 %} </strong>and<strong>{%- elif loop.index0 < loop.length-2 %},{% endif %}
-    {% endfor %}
+    {%- if (data.personal_information_collected == "") and (data.personal_collected_other != "") %}{{data.personal_collected_other | trim}}{%- elif (data.personal_information_collected != "") and (data.personal_collected_other != "") %}{% if data.personal_information_collected|is_not_string %}{{data.personal_collected_other | trim}}, {% else %}{{data.personal_collected_other | trim}} and {% endif %}{%- elif (data.personal_information_collected == "") and (data.personal_collected_other == "") %}{{defaultValue("personal_information_collected")}}{% endif %}{% if data.personal_information_collected|is_not_string %}{%- for item in data.personal_information_collected %}{{(__(data.personal_information_collected[loop.index0]))}}{%- if loop.index0 === loop.length-2 %} </strong> and <strong> {% elif loop.index0 < loop.length-2 %},  {% endif %}{% endfor %}{% else %}{{ (__(data.personal_information_collected)) }}{% endif %}
     </strong>
     will be collected.</p>
 
@@ -162,7 +156,7 @@
     {% if data.is_with_partner_team == "yes" and data.administrative_decision == "no" %}
       <p>Your personal information will not be used for any other purposes. Your information will not be used to make a decision that affects you or your access to benefits or services.</p>
     {% elif data.is_with_partner_team == "yes" and data.administrative_decision == "yes" %}
-      <p>Your personal information may be used for other purposes such as {{ defaultValue("administrative_purpose") | trim | lower}}. Your information may be used to make a decision that affects you or your access to benefits or services.</p>
+      <p>Your personal information may be used for other purposes such as {{ defaultValue("administrative_purpose") | trim}}. Your information may be used to make a decision that affects you or your access to benefits or services.</p>
     {% elif data.is_with_partner_team == "yes" and data.administrative_decision == "" %}{{ defaultValue("administrative_decision")}}
     {% endif %}
 

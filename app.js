@@ -18,8 +18,8 @@ const csrf = require('csurf')
 let { configRoutes, routes } = require('./config/routes.config') // test mock sets as undefined but says line isn't covered
 
 /* istanbul ignore next */ if (typeof configRoutes === 'undefined') {
-  // if not use the default
-  configRoutes = require('./utils/route.helpers').configRoutes
+	// if not use the default
+	configRoutes = require('./utils/route.helpers').configRoutes
 }
 
 // initialize application.
@@ -33,16 +33,16 @@ app.use(require('./config/i18n.config').init)
 
 // CSRF setup
 app.use(
-  csrf({
-    cookie: true,
-    signed: true,
-  }),
+	csrf({
+		cookie: true,
+		signed: true,
+	}),
 )
 
 // append csrfToken to all responses
 app.use(function(req, res, next) {
-  res.locals.csrfToken = req.csrfToken()
-  next()
+	res.locals.csrfToken = req.csrfToken()
+	next()
 })
 
 // in production: use redis for sessions
@@ -51,14 +51,14 @@ app.use(sessionConfig)
 
 // in production: precompile CSS
 app.use(
-  sassMiddleware({
-    src: path.join(__dirname, 'assets/scss'),
-    dest: path.join(__dirname, 'public'),
-    debug: false,
-    indentedSyntax: false, // look for .scss files, not .sass files
-    sourceMap: true,
-    outputStyle: 'compressed',
-  }),
+	sassMiddleware({
+		src: path.join(__dirname, 'assets/scss'),
+		dest: path.join(__dirname, 'public'),
+		debug: false,
+		indentedSyntax: false, // look for .scss files, not .sass files
+		sourceMap: true,
+		outputStyle: 'compressed',
+	}),
 )
 
 // public assets go here (css, js, etc)
@@ -94,11 +94,21 @@ configRoutes(app, routes)
 const nunjucks = require('nunjucks')
 
 const env = nunjucks
-  .configure([...app.get('views'), 'views/macros'], {
-    autoescape: true,
-    express: app,
-  })
-  .addGlobal('$env', process.env)
+	.configure([...app.get('views'), 'views/macros'], {
+		autoescape: true,
+		express: app,
+	})
+	.addGlobal('$env', process.env)
+	.addGlobal('loopFunc', loopFunc)
+
+function loopFunc(val) {
+	// val.length != 1
+	return false
+}
+
+env.addFilter('is_not_string', function(obj) {
+	return typeof obj != 'string'
+})
 
 addNunjucksFilters(env)
 

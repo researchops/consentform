@@ -68,11 +68,12 @@
                 {{ radioButtons('compensation', { 'on':'yes','off':'no'}, data.compensation, 'form.compensation', errors) }}
             </div>
             <div class="compensation-toggled" style="display:none" >
-                {{ radioButtons('compensation_method', { 
+                {{ checkBoxes('compensation_method', { 
                     '1':'form.compensation_cash_physical',
                     '2':'form.compensation_cash_transfer',
                     '3':'form.compensation_gift_card'
                     }, data.compensation_method, 'form.compensation_method', errors) }}
+                {{ textInput('compensation_other', '', {hint: 'form.compensation_other.desc'}) }}
                 {{ textInput('compensation_value', 'form.compensation_value', { hint: 'form.compensation_value.desc' }) }}
             </div>
         
@@ -153,7 +154,7 @@
             </div>
 
             <div>
-                {{ radioButtons('recording_type', { 
+                {{ checkBoxes('recording_type', { 
                 'on-1':'form.recording_video',
                 'on-2':'form.recording_audio',
                 'on-3':'form.recording_image',
