@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "commander": "^3.0.2",
-    "acorn": "^7.1.0",
+    "acorn": "^7.1.1",
     "cheerio": "^1.0.0-rc.3",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
