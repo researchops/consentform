@@ -3,6 +3,11 @@
         <fieldset class="fieldset">
             <legend class="fieldset__legend">{{ __(question) }}</legend>
             <div class="multiple-choice multiple-choice--checkboxes" id="{{ key }}">
+
+                {% if attributes.hint %}
+                <span class="form-message">{{ __(attributes.hint) }}</span>
+                {% endif %}
+                
                 {% if errors and errors[key] %}
                     {{ validationMessage(errors[key].msg, key) }}
                 {% endif %}

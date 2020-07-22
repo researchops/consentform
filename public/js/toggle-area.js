@@ -21,6 +21,7 @@ function toggleArea(event) {
 	}
 	if ((toggleState.indexOf('on') >= 0) & (checked == true)) {
 		target.style.display = 'block'
+		target.style.marginTop = '0px'
 	} else {
 		target.style.display = 'none'
 	}

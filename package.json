@@ -43,10 +43,9 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
-    "commander": "^3.0.2",
+    "commander": "^5.0.0",
     "acorn": "^7.1.1",
     "cheerio": "^1.0.0-rc.3",
-    "commander": "^5.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-config-standard": "^14.1.1",
