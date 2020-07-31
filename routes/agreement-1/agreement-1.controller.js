@@ -42,21 +42,11 @@ module.exports = (app) => {
 
 		var data = routeUtils.getViewData(req, {}).data
 
-		// data.administrative_decision = checkIfUndefined(data.administrative_decision)
-		// data.is_with_partner_team = checkIfUndefined(data.is_with_partner_team)
-		// data.compensation = checkIfUndefined(data.compensation)
-		// data.confidentiality = checkIfUndefined(data.confidentiality)
-		// data.recording_type = checkIfUndefined(data.recording_type)
-		// data.company_representation = checkIfUndefined(data.company_representation)
-		// data.consent = checkIfUndefined(data.consent)
-		// data.research_method = checkIfUndefined(data.research_method)
-		// data.personal_information_shared = checkIfUndefined(
-		// 	data.personal_information_shared,
-		// )
-		// data.personal_information_collected = checkIfUndefined(
-		// 	data.personal_information_collected,
-		// )
+		data.recording_type = checkIfUndefined(data.recording_type)
 		data.research_type = checkIfUndefined(data.research_type)
+		data.confidentiality = checkIfUndefined(data.confidentiality)
+		data.recording_shared = checkIfUndefined(data.recording_shared)
+		//Add any new data types here
 
 		console.log(data)
 
