@@ -12,27 +12,24 @@ var callback = (err, result) => {
 }
 
 function getRandomString() {
-	return Math.random()
-		.toString()
-		.split('.')[1]
-		.slice(0, 8)
+	return Math.random().toString().split('.')[1].slice(0, 8)
 }
 
 const startHtml = `<div style="display: none">Start of Agreement</div>`
 
 // make first letter lowercase and delete trailing periods
-const lowerCaseFirstLetter = s =>
+const lowerCaseFirstLetter = (s) =>
 	s && s.length > 0 ? s[0].toLowerCase() + s.slice(1) : s
 
-const stripTrailingPeriods = s =>
+const stripTrailingPeriods = (s) =>
 	s && s.length > 0 && typeof s == 'string' ? s.replace(/\.*\s*$/, '') : s
 
-const changeToPhrase = key =>
+const changeToPhrase = (key) =>
 	!key.includes('partner_department') && !key.includes('researcher')
 
-const checkIfUndefined = s => (s == undefined ? '' : s)
+const checkIfUndefined = (s) => (s == undefined ? '' : s)
 
-module.exports = app => {
+module.exports = (app) => {
 	const name = 'agreement-1'
 	const route = routeUtils.getRouteByName(name)
 
@@ -45,28 +42,29 @@ module.exports = app => {
 
 		var data = routeUtils.getViewData(req, {}).data
 
-		data.administrative_decision = checkIfUndefined(data.administrative_decision)
-		data.is_with_partner_team = checkIfUndefined(data.is_with_partner_team)
-		data.compensation = checkIfUndefined(data.compensation)
-		data.confidentiality = checkIfUndefined(data.confidentiality)
-		data.recording_type = checkIfUndefined(data.recording_type)
-		data.company_representation = checkIfUndefined(data.company_representation)
-		data.consent = checkIfUndefined(data.consent)
-		data.research_method = checkIfUndefined(data.research_method)
-		data.personal_information_shared = checkIfUndefined(
-			data.personal_information_shared,
-		)
-		data.personal_information_collected = checkIfUndefined(
-			data.personal_information_collected,
-		)
+		// data.administrative_decision = checkIfUndefined(data.administrative_decision)
+		// data.is_with_partner_team = checkIfUndefined(data.is_with_partner_team)
+		// data.compensation = checkIfUndefined(data.compensation)
+		// data.confidentiality = checkIfUndefined(data.confidentiality)
+		// data.recording_type = checkIfUndefined(data.recording_type)
+		// data.company_representation = checkIfUndefined(data.company_representation)
+		// data.consent = checkIfUndefined(data.consent)
+		// data.research_method = checkIfUndefined(data.research_method)
+		// data.personal_information_shared = checkIfUndefined(
+		// 	data.personal_information_shared,
+		// )
+		// data.personal_information_collected = checkIfUndefined(
+		// 	data.personal_information_collected,
+		// )
+		data.research_type = checkIfUndefined(data.research_type)
 
 		console.log(data)
 
 		var queryParams = {}
 		Object.keys(data)
 			// .filter(key => key !== '_csrf' && data[`${key}`] !== '')
-			.filter(key => key !== '_csrf')
-			.forEach(key => {
+			.filter((key) => key !== '_csrf')
+			.forEach((key) => {
 				checkIfUndefined(data[`${key}`])
 				// queryParams[`${key}`] = [data`${key}`]
 				queryParams['test'] = 'test'
@@ -90,7 +88,7 @@ module.exports = app => {
 				nextRoute: nextRoute,
 				docxFilename: docxFilename,
 			},
-			function(err, html) {
+			function (err, html) {
 				if (err) {
 					console.log(err)
 				}

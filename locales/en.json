@@ -26,7 +26,7 @@
   "Language Selection": "Language Selection",
   "footer.link1": "https://researchops.community",
   "footer.link1.desc": "Re+ops Community",
-  "landing-page.title": "Generate privacy and consent forms for research sessions",
+  "landing-page.title": "A Consent Form for User Research",
   "landing-page.intro": "This service will generate customized forms and privacy statements for you based on the type of design research you're doing. Ask your policy colleagues if you need one.",
   "landing-page.steps-recruit": "how you're planning to recruit participants",
   "landing-page.steps-tools": "which tools you'll be using (e.g. a voice recorder, notepad or camera)",
@@ -116,7 +116,7 @@
   "form.data.contact.email": "What is their email address?",
   "research.repository.title": "Data Storage Information",
   "form.research.repository.exists": "Will you be storing the data in the research repository?",
-  "form.research.repository.location": "Where will the data in the repository be stored?",
+  "form.research.repository.location": "Where will the research data be stored?",
   "form.research.repository.location.desc": "E.g. Secure file drive, protected cloud server, etc...",
   "form.research.repository.retention.original": "How long will it be before you destroy all personal data relating to the recordings?",
   "form.research.repository.retention.original.desc": "E.g. '12 weeks', '6 months', '2 years', etc...",
@@ -152,9 +152,12 @@
   "_AGREEMENT_SECTION_": "",
   "agreement.title_main": "Here's your generated privacy form",
   "agreement.start": "Start of Agreement",
-  "agreement.title_sub": "Consent to participate in research form",
+  "agreement.title_sub": "Consent to Participate in Research",
   "agreement.questions": "For any questions about this research, please contact:",
   "agreement.thankyou": "Thank you for volunteering to talk to us.",
   "agreement.working_with": "We are working with",
-  "agreement.research_reason": "We are conducting this research today to help us"
+  "agreement.research_reason": "We are conducting this research today to help us",
+  "form.recording.shared.yes1": "Yes, but their face will be obscured",
+  "form.recording.shared.yes2": "Yes, but their face will NOT be obscured",
+  "form.recording.shared.no": "No"
 }

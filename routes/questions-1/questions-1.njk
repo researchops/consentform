@@ -22,19 +22,19 @@
 
             <h2>{{ __('projectInfo.title') }}</h2>
 
-            {{ textInput('project.goal', 'form.project.goal', { hint: 'form.project.goal.desc' }) }}
+            {{ textArea('project.goal', 'form.project.goal', { hint: 'form.project.goal.desc' }) }}
 
-            {{ textInput('research.topic', 'form.research.topic', { hint: 'form.research.topic.desc' }) }}
+            {{ textArea('research.topic', 'form.research.topic', { hint: 'form.research.topic.desc' }) }}
 
-            {{ textInput('research.goal', 'form.research.goal', { hint: 'form.research.goal.desc' }) }}
+            {{ textArea('research.goal', 'form.research.goal', { hint: 'form.research.goal.desc' }) }}
 
-            {{ textInput('participant.value', 'form.participant.value', { hint: 'form.participant.value.desc' }) }}
+            {{ textArea('participant.value', 'form.participant.value', { hint: 'form.participant.value.desc' }) }}
 
             {{ textInput('research.output.text', 'form.research.output.text', { hint: 'form.research.output.text.desc', hint2: 'Output 1'}) }} 
             {{ textInput('research.output.text2', '', {hint2:'Output 2'}) }}
 
             <div class="toggle-area">
-                {{ radioButtons('research-type', { 'off-1':'form.research.type.interview','off-2':'form.research.type.workshop', 'off-3':'form.research.type.evaluation','on':'form.research.type.observation'}, data.research.type, 'form.research.type', errors) }}
+                {{ radioButtons('research_type', { 'off-1':'form.research.type.interview','off-2':'form.research.type.workshop', 'off-3':'form.research.type.evaluation','on':'form.research.type.observation'}, data.research_type, 'form.research.type', errors) }}
                 {# {{ radioButtons('research-type', { 'on':'yes','off':'no'}, data.research.type, 'form.research.type', errors) }} #}
             </div>
 
@@ -48,7 +48,7 @@
 
             <h2>{{ __('privacy.title') }}</h2>
 
-            {{ checkBoxes('personal.information.collected', { 
+            {{ checkBoxes('personal_information_collected', { 
             '1':'form.personal.information.personal.identifiers', 
             '2':'form.personal.information.personal.recorded.information', 
             '3':'form.personal.information.sensitive.personal.characteristics', 
@@ -60,7 +60,7 @@
             '9':'form.personal.information.professional.information',
             '10':'form.personal.information.nonpublic.education.information',
             '11':'form.personal.information.personal.inferences'
-            }, data.personal.information.collected, 'form.personal.information.collected', errors) }}
+            }, data.personal_information_collected, 'form.personal.information.collected', errors) }}
 
             <div class="toggle-area">
                 {{ checkBoxes('privacy-info', {'on-1':'form.privacy-info'}, data.privacy-info, '', errors) }}
@@ -83,16 +83,16 @@
             </div>
 
             <div>
-                {{ checkBoxes('recording.type', { 
+                {{ checkBoxes('recording_type', { 
                 '1':'form.recording.type.audio',
                 '2':'form.recording.type.video',
                 '3':'form.recording.type.device',
                 '4':'form.recording.type.image',
                 '5':'form.recording.type.none'
-                }, data.recording.type, 'form.recording.type', errors) }}
+                }, data.recording_type, 'form.recording.type', errors) }}
             </div>
 
-            {{ radioButtons('recording.shared', { 'on':'yes','off':'no'}, data.recording.shared, 'form.recording.shared', errors) }}
+            {{ radioButtons('recording_shared', { 'on-1':'form.recording.shared.yes1','on-2':'form.recording.shared.yes2','off-1':'form.recording.shared.no'}, data.recording_shared, 'form.recording.shared', errors) }}
 
             <div class="toggle-area">
             {{ radioButtons('confidentiality', { 'off-1':'form.confidentiality.full','on-1':'form.confidentiality.partial','on-2':'form.confidentiality.none'}, data.confidentiality, 'form.confidentiality', errors) }}
@@ -133,14 +133,10 @@
 
             <h2>{{ __('research.repository.title') }}</h2>
 
-            <div class="toggle-area">
-                {{ radioButtons('research-repository-exists', { 'on':'yes','off':'no'}, data.research.repository.exists, 'form.research.repository.exists', errors) }}
-            </div>
-
-             <div class="research-repository-exists-toggled" style="display:none" >
             {{ textInput('research.repository.location', 'form.research.repository.location', { hint: 'form.research.repository.location.desc' }) }}
-             </div>
-            
+
+            {{ radioButtons('research-repository-exists', { 'on':'yes','off':'no'}, data.research.repository.exists, 'form.research.repository.exists', errors) }}
+
             {{ textInput('research.repository.retention.original', 'form.research.repository.retention.original', { hint: 'form.research.repository.retention.original.desc'}) }}
 
             {{ textInput('research.repository.retention.personal', 'form.research.repository.retention.personal', { hint: 'form.research.repository.retention.personal.desc'}) }}
@@ -153,16 +149,16 @@
 
              <div class="compensation-toggled" style="display:none" >
             {{ textInput('research.compensation.value', 'form.compensation.value', { hint: 'form.compensation.value.desc' }) }}
+
+                <div class="toggle-area">
+                    {{ radioButtons('compensation-followup-needed', { 'on':'yes','off':'no'}, data.compensation, 'form.compensation.followup.needed', errors) }}
+                </div>
+
+                <div class="compensation-followup-needed-toggled" style="display:none" >
+                {{ textInput('compensation.followup.needed.value', 'form.compensation.followup.needed.value', { hint: 'form.compensation.followup.needed.value.desc' }) }}
+                </div>
+
              </div>
-
-            <div class="toggle-area">
-                {{ radioButtons('compensation-followup-needed', { 'on':'yes','off':'no'}, data.compensation, 'form.compensation.followup.needed', errors) }}
-            </div>
-
-             <div class="compensation-followup-needed-toggled" style="display:none" >
-            {{ textInput('compensation.followup.needed.value', 'form.compensation.followup.needed.value', { hint: 'form.compensation.followup.needed.value.desc' }) }}
-             </div>
-
 
             {{ formButtons() }}
         </form>

@@ -1,13 +1,11 @@
 // 1) add your route(s) here ⬇️
 const routes = [
-  { name: 'landing-page', path: '/' },
-  { name: 'questions-1', path: '/questions-1' },
-  { name: 'agreement-1', path: '/agreement-1' },
-  { name: 'questions-2', path: '/questions-2' },
-  { name: 'agreement-2', path: '/agreement-2' },
-  { name: 'feedback', path: '/feedback' },
-  { name: 'feedback-thanks', path: '/feedback-thanks' },
-  { name: 'email-link', path: '/email-link' },
+	{ name: 'landing-page', path: '/' },
+	{ name: 'questions-1', path: '/questions-1' },
+	{ name: 'agreement-1', path: '/agreement-1' },
+	{ name: 'feedback', path: '/feedback' },
+	{ name: 'feedback-thanks', path: '/feedback-thanks' },
+	{ name: 'email-link', path: '/email-link' },
 ]
 
 // note: you can define and export a custom configRoutes function here
@@ -15,5 +13,5 @@ const routes = [
 // if configRoutes is defined here it will be used in pacle of the default
 
 module.exports = {
-  routes,
+	routes,
 }

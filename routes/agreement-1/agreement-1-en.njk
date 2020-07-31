@@ -3,12 +3,131 @@
 {% block content %}
 
 <h1>{{ __('agreement.title_main') }}</h1>
-
-<div style="display: none">{{ __('agreement.start') }}</div>
-
 <hr style="margin-top: 40px"/>
-
 <h2>{{ __('agreement.title_sub') }}</h2>
+<hr/>
+
+<div>
+<h2>Introduction</h2>
+  <p>
+  Hello my name is {{ defaultValue("researcher_name", false) | title}}. I'm the researcher for this project and responsible for making sure you know what is going on, why we need you for this project, what your rights are and how we are going to handle your information.
+  </p>
+</div>
+
+<div>
+<h2>What is this form about?</h2>
+  <p>This form is to provide you information about what informed consent is</p>
+  <p>
+    Informed consent means that:
+    <ul>
+      <li>
+        The purpose of the research has to be clearly explained to you
+      </li>
+      <li>
+        That you fully understand what is going to happen
+      </li>
+      <li>
+        That you freely choose to take part, without feeling pressured to.
+      </li>
+    </ul>
+    Please take the time to read the following information carefully. And let us know if anything that is not clear or if you would like us to explain something.
+  </p>
+</div>
+
+<div>
+  <h2>What is this Project about?</h2>
+  <p>
+    The purpose of this study is to {{ defaultValue("project.goal", false)}}.
+    We're doing some research to learn more about {{ defaultValue("research.topic", false)}} so we can understand how we might {{ defaultValue("research.goal", false)}} in the future. We'd like to talk with you about it because {{ defaultValue("participant.value", false)}}.
+  </p>
+  <p>
+    We plan to produce: {{ defaultValue("research.output.text", false)}},  {{ defaultValue("research.output.text2", false)}}, and may store the original data from this session in a repository with the outputs so it can be reused for other purposes if you give us your consent. 
+  </p>
+</div> 
+
+<div>
+  <h2>What to expect from the session?</h2>
+  {% if (data.research_type == "form.research.type.interview")%}
+    <p>We will ask some questions about you and your role in relation to {{ defaultValue("research.topic", false)}}.  This is so we can get an idea of what''s involved, as well as any thoughts and feelings about it.</p>
+  {% elif (data.research_type == "form.research.type.workshop")%}
+    <p>The session will involve us working in a group to explore {{ defaultValue("research.topic", false)}}. We will do this through several exercises. There will be a facilitator who will set the agenda and purpose of the session and guide you through the session.</p>
+  {% elif (data.research_type == "form.research.type.evaluation")%}
+    <p>We will ask you to try a series of tasks or activities, using a (prototype of a) product or service related to {{ defaultValue("research.topic", false)}}. We may ask you questions to help us understand your opinions, thoughts, experiences, and feelings.</p>
+  {% elif (data.research_type == "form.research.type.observation")%}
+    <p>To help us understand the real life experiences of someone who might be interested in {{ defaultValue("research.topic", false)}}. We'd like to come and chat to you for {{ defaultValue("research.goal", false)}} over {{ defaultValue("session.info.observation.duration", false)}}.</P>
+  {% endif %}
+  <p>
+    You do not need to bring anything with you, such as a laptop or a mobile phone. If the research is in a group setting, we ask that you are open minded to the views and opinions of others in the session.
+  </p>
+  <p>
+    The session will last approximately {{ session.time}} and be conducted {{ session.setting }}. There may be other people watching at the time who will be taking notes or placing your notes onto a database. We will inform you if there are going to be any notetakers beforehand.
+  </p>
+</div>
+
+<div>
+<h2>What Information do we want to collect?</h2>
+  <p>
+    We are interested in collecting information about the following topics: 
+    <ul>
+      {%- for item in data.personal_information_collected %}
+        <li>{{(__(data.personal_information_collected[loop.index0]))}}</li>
+      {% endfor %}
+    </ul>
+  </p>
+  <p>
+    {{ data["researcher_name"] }} can provide more information about what these entail but is likely to include some of your personal details as well as your skills and experience.
+  </p>
+</div>
+
+<div>
+  <h2>How will your information be used?</h2>
+  {%- if "form.recording.type.none" in data.recording_type %}
+    <p>We will not directly record you in this session</p>
+  {% else %}
+    <p>
+      The session will be recorded in the following ways:
+      <ul>
+        {%- if "form.recording.type.audio" in data.recording_type %}<li>Audio</li>{% endif %}
+        {%- if "form.recording.type.video" in data.recording_type %}<li>Video</li>{% endif %}
+        {%- if "form.recording.type.device" in data.recording_type %}<li>Images of your screen</li>{% endif %}
+        {%- if "form.recording.type.image" in data.recording_type %}<li>Images of you</li>{% endif %}
+      </ul>
+    </p>
+  {%- endif %}
+  <p>We will take notes to record your comments and actions</p>
+  <p>We'll keep a record of any information you produce (such as post-it notes or sketches). These notes may be copied onto a database to help with analysis or for future research.</p>
+  <p>
+    {%- if "form.confidentiality.full" in data.confidentiality %}
+      Your information will be confidential. This means your responses will be anonymised and cannot be linked to you.
+    {% elif "form.confidentiality.partial" in data.confidentiality %}
+      Any information will be stripped of any personally identifiable information (PII). That means nothing you share will be traceable back to you. None of the information you give me will be made public.
+    {% elif "form.confidentiality.none" in data.confidentiality %}
+      Your information will not be confidential. Your input will be shared publicly and could be associated with you.
+    {% endif %}
+  </p>
+</div>
+
+<div>
+  <h2>Who will see this?</h2>
+  <p>The data from our research may be reused for further research beyond this project. What you agree to here on this form will help us know what we can do with your data in the future.</p>
+  <p>This means that we may publish research reports that include your comments and actions, but your name and identity will not be linked in our research reports to anything you say or do, unless we have specifically asked you for permission.</p>
+  <p>Access to recordings will be limited to the project team.</p>
+  {%- if "form.recording.shared.yes1" in data.recording_shared %}<p>Clips that have your likeness will be obscured, and may be shared outside the project team.</p>
+  {%- elif "form.recording.shared.yes2" in data.recording_shared %}<p>Clips that have your likeness may be shared outside the project team.</p>
+  {% endif %}
+</div>
+
+<div>
+  <h2>How long will we keep your information?</h2>
+  {%- if researcher_org == "" %}
+    <p>{{ defaultValue("researcher_org", false)}} is responsible for any information you give us throughout the project. Any recordings we make will be stored on our {{ defaultValue("research.repository.location", false)}}.</p>
+  {%- else %}
+    <p>{{ defaultValue("researcher_name", false)}} is responsible for any information you give us throughout the project. Any recordings we make will be stored on our {{ defaultValue("research.repository.location", false)}}.</p>
+  {% endif %}
+  <p>All recordings, transcripts, and any raw data will be destroyed within {{ defaultValue("research.repository.retention.original", false)}}. We will delete all your personal data after {{ defaultValue("research.repository.retention.personal", false)}}, which means the data is then completely anonymous and unable to be deleted or withdrawn.</p>
+</div>
+
+{# 
 
 <div>
     <p>
@@ -173,6 +292,6 @@
       <p>We may record your personal information during this research. If you wish to access, withdraw, or correct that personal information, please contact the person or organisation mentioned at the top of this form.</p>
     {% endif %}
 
-</div>
+</div> #}
 
 {% endblock %}
