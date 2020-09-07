@@ -92,8 +92,9 @@ h6 {
 
 main {
   @extend %page-container;
-  padding: 0 $space-md;
+  padding: 0 $space-md $space-xxxl;
   // padding-bottom: calc(#{$height-footer} + #{$space-xxl});
+  
 
   h1 {
     border-bottom: 5px solid $color-reops-blue;
