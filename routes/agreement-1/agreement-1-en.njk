@@ -127,4 +127,114 @@
   <p>All recordings, transcripts, and any raw data will be destroyed within {{ defaultValue("research.repository.retention.original", false)}}. We will delete all your personal data after {{ defaultValue("research.repository.retention.personal", false)}}, which means the data is then completely anonymous and unable to be deleted or withdrawn.</p>
 </div>
 
+<div>
+  <h2>How will you be compensated?</h2>
+  {%- if data.compensation == 'yes' %}<p>If you do choose to participate, we offer a thank you gift for your time and energy of {{ defaultValue("research.compensation.value", false)}}. As you are receiving compensation for participating, the fact that you participated is not able to be kept confidential.</p>{% endif %}
+  {%- if data.compensation_followup_needed == 'yes' %}<p>If we arrange a follow-up interview with you there will be an additional thank you gift of {{ defaultValue("compensation.followup_needed_value", false)}}.</p>{% endif %}
+</div>
+
+<div>
+  <h2>What are your Rights & Obligations?</h2>
+  Always remember the following:
+  <ol> 
+    <li>You have a right to change your mind, or ‘withdraw consent’ at any time. This can be before, during, or after the session.</li>
+    <li>You decide how much you share. We know we’re asking people to speak about something that can be sensitive and emotional. You can choose not to answer questions that feel like too much - to take breaks - or we can stop if that feels right for you.</li>
+    <li>You have the right not to be judged when you share your story. We know that situations and decisions in life happen for lots of different reasons, many of which are out of our control. We will listen to what you share with empathy, not judgment.</li>
+    <li>You are not obliged to answer any question you are asked and free to ask why you are being asked this question.</li>
+    <li>You can access your information at any time during or after the project.</li>
+    {%- if data.organisation_representation == 'yes' %}
+      <li>Any information that you share must not be restricted for sharing by your employer or your clients.</li>
+      <li>Any information you share must not be material non-public information.</li>
+    {% endif %}
+    {% if "researcher_org" != '' %}
+      <li>You have the right for your data to be held securely. We save your data without your name or any other identifying information. Your data is held securely by {{ defaultValue("researcher_org", false)}}.</li>
+    {% endif %}
+    <li>You have the right to be totally anonymous. We won’t share any details that identify you (like your name or address) with anyone else. When we write our report, we might use quotes from what you shared, but never with your name.</li>
+    {% if "researcher_org" != '' %}
+      <li>If you have any concerns, queries or changes to your consent, you can contact {{ defaultValue("data.contact", false)}} from {{ defaultValue("researcher_org", false)}} on {{ defaultValue("data.contact.email", false)}}</li>
+    {% else %}
+      <li>If you have any concerns, queries or changes to your consent, you can contact {{ defaultValue("data.contact", false)}} on {{ defaultValue("data.contact.email", false)}}</li>
+    {% endif %}
+  </ol>
+</div>
+
+<div>
+  <h2>Your Consent</h2>
+  <p>By agreeing you acknowledge the information given and confirm that you have understood what you are being asked to do and are comfortable with taking part in the research.</p>
+  <p>Please tick the box next to each statement you agree with and sign this form showing that you consent to us collecting these data.</p>
+  <div class="multiple-choice multiple-choice--checkboxes">
+
+    <div class="multiple-choice__item">
+      <input id="primary_check" type="checkbox">
+      <label for="primary_check">I agree to participate in the study conducted by {{ defaultValue("researcher_name", false)}} on behalf of {{ defaultValue("researcher_org", false)}}</label>
+    </div>
+
+      {%- if "form.recording.type.audio" in data.recording_type %}
+        <div class="multiple-choice__item">
+          <input id="audio_check" type="checkbox">
+          <label for="audio_check">I agree to my audio being recorded and used for note taking</label>
+        </div>
+      {% endif %}
+
+      {%- if "form.recording.type.video" in data.recording_type %}
+        <div class="multiple-choice__item">
+          <input id="video_check" type="checkbox">
+          <label for="video_check">I agree to being recorded on video</label>
+        </div>
+      {% endif %}
+
+      {%- if "form.recording.type.device" in data.recording_type %}
+        <div class="multiple-choice__item">
+          <input id="device_check" type="checkbox">
+          <label for="device_check">I agree to pictures being taken of my screen</label>
+        </div>
+      {% endif %}
+
+      {%- if "form.recording.type.image" in data.recording_type %}
+        <div class="multiple-choice__item">
+          <input id="image_check" type="checkbox">
+          <label for="image_check">I agree to my picture being taken</label>
+        </div>
+      {% endif %}
+
+    <div class="multiple-choice__item">
+      <input id="data_check" type="checkbox">
+      <label for="data_check">I agree for my data to be used for the project team to learn more about {{ defaultValue("research.topic", false)}}</label>
+    </div>
+
+    <div class="multiple-choice__item">
+      <input id="data_check" type="checkbox">
+      <label for="data_check">I understand that participation in this research study is voluntary and I agree to immediately raise any concerns or areas of discomfort during the session with the researcher</label>
+    </div>
+
+    <div class="multiple-choice__item">
+      <input id="data_check" type="checkbox">
+      <label for="data_check">Anything you see during the testing is confidential and disclosing any information from the testing could be construed as disclosing insider information under England and Wales Law on financial conduct</label>
+    </div>
+
+    <div class="multiple-choice__item">
+      <input id="data_check" type="checkbox">
+      <label for="data_check">All of this consent form complies with GDPR and our Privacy Policy</label>
+    </div>
+
+    <div class="multiple-choice__item">
+      <input id="data_check" type="checkbox">
+      <label for="data_check">I have read the above document and agree to abide by the terms stated for this project.</label>
+    </div>
+
+  </div>
+
+<div>
+  <p>Signed: __________________________________________________________________________________</p>
+  <p>Print Name: _____________________________________________________________________________</p>
+  <p>Date: _____________________________________________________________________________________</p>
+  {%- if data.organisation_representation == 'yes' %}
+    <p>As you are representing an organisation, please indicate their name below.</p>
+    <p>Legal Business Name: __________________________________________________________________</p>
+  {% endif %}
+  </div>
+
+<div>
+  <p style="font-size: 0.7em">This consent form has been produced using the ResearchOps Community's  Consent Form Builder and is powered by Consentkit.io. This form is available for use by Creative Commons License ShareAlike 4.0. All are welcome to expand on it, share it and modify it but must always give credit to the ResearchOps Community and Consentkit.io as its source.</p>
+</div>
 {% endblock %}

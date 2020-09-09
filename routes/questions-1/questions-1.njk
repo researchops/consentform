@@ -151,11 +151,11 @@
             {{ textInput('research.compensation.value', 'form.compensation.value', { hint: 'form.compensation.value.desc' }) }}
 
                 <div class="toggle-area">
-                    {{ radioButtons('compensation-followup-needed', { 'on':'yes','off':'no'}, data.compensation, 'form.compensation.followup.needed', errors) }}
+                    {{ radioButtons('compensation_followup_needed', { 'on':'yes','off':'no'}, data.compensation_followup_needed, 'form.compensation_followup_needed', errors) }}
                 </div>
 
-                <div class="compensation-followup-needed-toggled" style="display:none" >
-                {{ textInput('compensation.followup.needed.value', 'form.compensation.followup.needed.value', { hint: 'form.compensation.followup.needed.value.desc' }) }}
+                <div class="compensation_followup_needed-toggled" style="display:none" >
+                {{ textInput('compensation.followup_needed_value', 'form.compensation_followup_needed_value', { hint: 'form.compensation_followup_needed_value.desc' }) }}
                 </div>
 
              </div>

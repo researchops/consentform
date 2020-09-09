@@ -46,6 +46,10 @@ module.exports = (app) => {
 		data.research_type = checkIfUndefined(data.research_type)
 		data.confidentiality = checkIfUndefined(data.confidentiality)
 		data.recording_shared = checkIfUndefined(data.recording_shared)
+		data.compensation = checkIfUndefined(data.compensation)
+		data.compensation_followup_needed = checkIfUndefined(
+			data.compensation_followup_needed,
+		)
 		//Add any new data types here
 
 		console.log(data)
