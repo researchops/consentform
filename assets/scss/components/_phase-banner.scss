@@ -27,6 +27,9 @@
     padding: 1px 5px;
     letter-spacing: 1px;
     margin-right: 1.7em;
+    width: 15%;
+    font-weight: bold;
+    color: red;
 
     @include sm {
       padding: 1px 7px;

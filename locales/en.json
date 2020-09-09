@@ -1,4 +1,5 @@
 {
+  "1": "1",
   "404": "404",
   "500": "500",
   "_GENERIC PHRASES_": "",
@@ -126,9 +127,9 @@
   "form.compensation": "Will you be compensating the participant for their time?",
   "form.compensation.value": "What is the value of the incentive?",
   "form.compensation.value.desc": "E.g. $25, £50, 'a discount card', 'branded goodies', etc...",
-  "form.compensation.followup.needed": "Will you be organising a follow up interview?",
-  "form.compensation.followup.needed.value": "What is the value of the incentive for the followup?",
-  "form.compensation.followup.needed.value.desc": "E.g. $25, £50, 'a discount card', 'branded goodies', etc...",
+  "form.compensation_followup_needed": "Will you be organising a follow up interview?",
+  "form.compensation_followup_needed_value": "What is the value of the incentive for the followup?",
+  "form.compensation_followup_needed_value.desc": "E.g. $25, £50, 'a discount card', 'branded goodies', etc...",
   "_QUESTIONS_FEEDBACK_SECTION_": "",
   "feedback.title": "Feedback",
   "feedback-thanks.title": "Thank you",
@@ -159,5 +160,6 @@
   "agreement.research_reason": "We are conducting this research today to help us",
   "form.recording.shared.yes1": "Yes, but their face will be obscured",
   "form.recording.shared.yes2": "Yes, but their face will NOT be obscured",
-  "form.recording.shared.no": "No"
+  "form.recording.shared.no": "No",
+  "I agree to my audio being recorded and used for note taking": "I agree to my audio being recorded and used for note taking"
 }
