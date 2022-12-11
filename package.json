@@ -27,7 +27,7 @@
     "copy-template-dir": "^1.4.0",
     "csurf": "^1.11.0",
     "dotenv": "^8.2.0",
-    "express": "~4.17.1",
+    "express": "~4.17.3",
     "express-session": "^1.17.0",
     "express-validator": "^6.4.0",
     "helmet": "^3.22.0",
